@@ -37,11 +37,12 @@ public class Main {
                 .filter(age -> age.getAge() >= 18)
                 .filter(
                         person -> ((person.getSex() == Sex.MAN) && (person.getAge() < 65))
-                        &&
+                        ||
                         ((person.getSex() == Sex.WOMAN) && (person.getAge() < 60))
                         )
-                .sorted(Comparator.comparing(Person::getFamily))
                 .map(Person::toString)
+                .sorted(Comparator.comparing(Person::getFamily))
+//                .map(Person::toString)
                 .collect(Collectors.toList());
 
         System.out.println(potentialEmployee);
